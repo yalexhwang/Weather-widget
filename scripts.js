@@ -11,11 +11,16 @@ $(document).ready(function() {
 		// keep the form from submitting
 		event.preventDefault();
 
-		var cityText = $('#search').val();
-		var url = "http://api.openweathermap.org/data/2.5/forecast/city?q=" + cityText + "&units=imperial&APPID=" + apiKey;
-		var url16d = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityText + "&units=imperial&APPID=" + apiKey;
-		var url3hrs = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityText + "&units=imperial&APPID=" + apiKey;
-
+		// var cityText = $('#search').val();
+		var cityText = "atlanta";
+		if (cityText === "") {
+			return false;
+		} else {
+			var url = "http://api.openweathermap.org/data/2.5/forecast/city?q=" + cityText + "&units=imperial&APPID=" + apiKey;
+			var url16d = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + cityText + "&units=imperial&APPID=" + apiKey;
+			var url3hrs = "http://api.openweathermap.org/data/2.5/forecast?q=" + cityText + "&units=imperial&APPID=" + apiKey;
+		}
+		
 		$.getJSON(url, function(weatherData) {
 			console.log(weatherData);
 			currentTemp = weatherData.list[0].main.temp;
@@ -23,13 +28,14 @@ $(document).ready(function() {
 
 			var currentCity = weatherData.city.name;
 			var country = weatherData.city.country;
-			$('.current-title').prepend("<h2>" + currentCity + "</br><small>" + country + "</small></h2>")
+			$('.current-title').prepend("<h2>" + currentCity + "<small> " + country + "</small></h2>")
 			var now = weatherData.list[0].dt_txt;
 			var weatherNow = weatherData.list[0].weather[0].main;
 			$('.current-title-info').html("<h4>" + weatherNow);
 			$('.current-info').prepend("<h6>" + now + "</h6>");
 
 			makeCurrentTable(weatherData);
+			$('.main-right-nav').toggle();
 		
 		});
 
@@ -53,20 +59,24 @@ $(document).ready(function() {
 			for (var i = 0; i < weatherData.list.length; i++) {
 				var rawDate = weatherData.list[i].dt;
 				var date = new Date(rawDate * 1000);
-				date = date.toISOString().slice(0, 10);
 				var morningTemp = weatherData.list[i].temp.morn;
 				var dayTemp = weatherData.list[i].temp.day;
 				var eveTemp = weatherData.list[i].temp.eve;
 				var nightTemp = weatherData.list[i].temp.night;
+				var clouds = weatherData.list[i].weather[0].description;
 				var humidity = weatherData.list[i].humidity;
 				var weather = weatherData.list[i].weather[0].main;
-				var day = new ForecastDays(date, morningTemp, dayTemp, eveTemp, nightTemp, humidity, weather);
-				daysObjArr.push(day);
+				var newDay = new ForecastDays(date, morningTemp, dayTemp, eveTemp, nightTemp, clouds, humidity, weather);
+				daysObjArr.push(newDay);
 			}
 			makeForecast();
-			$('.main-right').prepend('<h4>Next Days</h4>');
 		});
+		$('#search').val("");
+		$('#tabs li:eq(0) a').tab('show');
+		$('#tabs li:eq(1) a').tab('show');
+		$('#tabs li:eq(2) a').tab('show');
 	});
+	
 
 	function animate(current) {	
 		var tempColor = '#ff0000';
@@ -76,7 +86,7 @@ $(document).ready(function() {
 		ctx.clearRect(0, 0, 350, 200);
 
 		ctx.beginPath();
-		ctx.arc(105, 100, 55, 0, Math.PI * 2);
+		ctx.arc(130, 90, 55, 0, Math.PI * 2);
 		ctx.fillStyle = "#ebebeb";
 		ctx.fill();
 
@@ -84,11 +94,11 @@ $(document).ready(function() {
 		ctx.font = "30px Arial";
 		ctx.fillStyle = "black";
 		ctx.textAlign = "center";
-		ctx.fillText(currentTemp, 105, 110);
+		ctx.fillText(currentTemp, 130, 100);
 		ctx.closePath();
 
 		ctx.beginPath();
-		ctx.arc(105, 100, 60, Math.PI * 1.5, (current / 100) * Math.PI * 2 + (Math.PI * 1.5));
+		ctx.arc(130, 90, 60, Math.PI * 1.5, (current / 100) * Math.PI * 2 + (Math.PI * 1.5));
 		ctx.stroke();
 		current++;
 		if (current < currentTemp) {
@@ -114,12 +124,26 @@ $(document).ready(function() {
 		$('#wind').text(windDeg + " " + windSpeed);
 	}
 
-	function ForecastDays(date, morning, day, evening, night, humidity, weather) {
+	function convertRawDate(rawDate) {
+		var date = new Date(rawDate * 1000);
+		console.log(date);
+		var day = date.toString().slice(0, 3);
+		var mo = date.toString().slice(4, 7);
+		var d = date.toString().slice(8, 10);
+		var yr = date.toString().slice(11, 15);
+		date = mo + d + yr;
+		console.log(day);
+		console.log(date);
+
+	}
+
+	function ForecastDays(date, morning, day, evening, night, clouds, humidity, weather) {
 		this.date = date;
 		this.morning = morning;
 		this.day = day;
 		this.evening = evening;
 		this.night = night;
+		this.clouds = clouds;
 		this.humidity = humidity;
 		this.weather = weather;
 	}
@@ -129,27 +153,45 @@ $(document).ready(function() {
 		console.log(daysObjArr);
 
 		for (var i = 0; i < 7; i++) {
-			var date = daysObjArr[i].date;
-			var morning = daysObjArr[i].morning;
-			var day = daysObjArr[i].day;
-			var evening = daysObjArr[i].evening;
-			var night = daysObjArr[i].night;
-			var humidity = daysObjArr[i].humidity;
 			var weather = daysObjArr[i].weather;
-			$('.forecast-day:eq(0) > weather').text(weather);
-			$('.forecast-day:eq(0) > weather').text(weather);
-			$('.forecast-day:eq(0) > weather').text(weather);
-			$('.forecast-day:eq(0) > weather').text(weather);
-			$('.forecast-day:eq(0) > weather').text(weather);
-			$('.forecast-day:eq(0) > weather').text(weather);
-		}
+			var placeWeather = document.getElementsByClassName('weather')[i];
+			placeWeather.innerHTML = "<h4>" + weather + "</h4>";
+			
+			var date = daysObjArr[i].date.toString();
+			var day = date.slice(0, 3);
+			date = date.slice(4, 15);
+			var placeDate = document.getElementsByClassName('forecast-day-right')[i];
+			placeDate.innerHTML = "<h4>" + day + "</br><small>" + date + "</small></h4>"
 
+			var mornTemp = daysObjArr[i].morning;
+			var dayTemp = daysObjArr[i].day;
+			var eveTemp = daysObjArr[i].evening;
+			var nightTemp = daysObjArr[i].night;
+			var clouds = daysObjArr[i].clouds;
+			var humidity = daysObjArr[i].humidity;
+			var placeMorning = document.getElementsByClassName('item-morning')[i];
+			var placeDay = document.getElementsByClassName('item-day')[i];
+			var placeEvening = document.getElementsByClassName('item-evening')[i];
+			var placeNight = document.getElementsByClassName('item-night')[i];
+			var placeClouds = document.getElementsByClassName('item-clouds')[i];
+			var placeHumidity = document.getElementsByClassName('item-humidity')[i];
+			console.log(mornTemp);
+			console.log(placeMorning);
+			placeMorning.innerHTML = mornTemp;
+			placeDay.innerHTML = dayTemp;
+			placeEvening.innerHTML = eveTemp;
+			placeNight.innerHTML = nightTemp;
+			placeClouds.innerHTML = clouds;
+			placeHumidity.innerHTML = humidity;
+
+		}
+		$('.forecast-day-mddl > table').toggle();
 	}
 
 
-
-
 });
+
+
 
 
 

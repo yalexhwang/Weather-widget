@@ -26,18 +26,17 @@
 					<label for="search"></label>
 					<input type="text" id="search" class="form-control">
 				</div>
-				<button type="submit" class="btn btn-default">Enter</button>
+				<button type="submit" id="search-btn" class="btn btn-default">Enter</button>
 			</form>
 		</div>
 	</div>
 	<div class="row">
 		<div class="main">
 			<div class="col-sm-5 main-left">
-				<div class="col-sm-4 current-title">
-					<div class="current-title-info"></div>
+				<div class="col-sm-12 current-title">
+					<div class="current-title-info"></div>	
 				</div>
-				<canvas id="current-temp" height="180px" width="220px">
-				</canvas>
+				<canvas id="current-temp" height="180px" width="260px"></canvas>
 				<div class="col-sm-12 current-info">
 					<table class="table table-borderd table-condensed" id="table">
 						<tbody>
@@ -66,60 +65,236 @@
 				</div>
 			</div>
 			<div class="col-sm-7 main-right">
-				<div class="forecast-days-board">
-					<div class="forecast-day">
-						<div class="forecast-day-left">
+				<div class="col-sm-12 main-right-nav">
+					<ul class="nav nav-pills" id="tabs">
+						<li role="presenation"><a href="#">Hourly</a></li>
+						<li role="presenation"><a href=".forecast-days-board">Next 7 Days</a></li>
+						<li role="presenation"><a href="#">Something else</a></li>
+					</ul>
+				</div>
+
+				<div class="col-sm-12 tab-content forecast-days-board">
+					<div class="col-sm-12 tab-pane forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
-					<div class="forecast-day">
-						<div class="forecast-day-left">
+					<div class="col-sm-12 forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
-					<div cladss="forecast-day">
-						<div class="forecast-day-left">
+					<div class="col-sm-12 forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
-					<div class="forecast-day">
-						<div class="forecast-day-left">
+					<div class="col-sm-12 forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
-					<div class="forecast-day">
-						<div class="forecast-day-left">
+					<div class="col-sm-12 forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
-					<div class="forecast-day">
-						<div class="forecast-day-left">
+					<div class="col-sm-12 forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
-					<div class="forecast-day">
-						<div class="forecast-day-left">
+					<div class="col-sm-12 forecast-day">
+						<div class="col-sm-4 forecast-day-left">
 							<div class="weather"></div>
 						</div>
-						<div class="forecat-day-right">
+						<div class="col-sm-5 forecast-day-mddl">
+							<table class="table table-condensed">
+								<tr>
+									<td class="item">Morning</td>
+									<td class="item-morning"></td>
+									<td class="item">Clouds</td>
+								</tr>
+								<tr>
+									<td class="item">Day</td>
+									<td class="item-day"></td>
+									<td class="item-clouds"></td>
+								</tr>
+								<tr>
+									<td class="item">Evening</td>
+									<td class="item-evening"></td>
+									<td class="item">Humidity</td>
+								</tr>
+								<tr>
+									<td class="item">Night</td>
+									<td class="item-night"></td>
+									<td class="item-humidity"></td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-sm-3 forecast-day-right">
 							<h4>Date</h4>
 						</div>
 					</div>
