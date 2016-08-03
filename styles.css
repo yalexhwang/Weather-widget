@@ -1,0 +1,55 @@
+.container {
+	width: 80%;
+	margin: auto;
+}
+
+.header {
+	margin: 30px;
+	text-align: center;
+}
+
+.search-bar {
+	padding: 15px 20px;
+	border: 1px solid grey;
+
+}
+
+.main {
+	margin-top: 20px;
+}
+
+.main-right {
+	padding-top: 10px;
+}
+
+.current-title {
+	height: 80px;
+}
+
+.current-title > h4 {
+	padding: 5px 0px 0px 10px;
+}
+
+.current-title-info {
+	padding-top: 40px;
+}
+
+.forecast-days-board {
+	display: none;
+}
+
+.forecast-days {
+	border: 1px solid grey;
+	border-radius: 3px;
+	height: 90px;
+	margin: 10px;
+}
+
+.current-info > h6 {
+	color: #a5a0a9;
+}
+
+.table {
+	margin-top: 10px;
+	display: none;
+}

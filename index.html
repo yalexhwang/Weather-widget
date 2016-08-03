@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Weather Widget</title>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="iconstuff\css\weather-icons.min.css">
+
+	<link rel="stylesheet" href="styles.css">
+	<script src="jquery.min.js"></script>
+	<script src="scripts.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 header">	
+			<h1>Weather Watch</h1>
+			<i class="wi wi-day-sunny"></i>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 search-bar">	
+			<form class="form-inline weather-form">
+				<div class="form-group">
+					<label for="search"></label>
+					<input type="text" id="search" class="form-control">
+				</div>
+				<button type="submit" class="btn btn-default">Enter</button>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="main">
+			<div class="col-sm-5 main-left">
+				<div class="col-sm-4 current-title">
+					<div class="current-title-info"></div>
+				</div>
+				<canvas id="current-temp" height="180px" width="220px">
+				</canvas>
+				<div class="col-sm-12 current-info">
+					<table class="table table-borderd table-condensed" id="table">
+						<tbody>
+							<tr>
+								<td id="min-title">Lowest</td>
+								<td id="min"></td>
+							</tr>
+							<tr>
+								<td id="max-title">Highest</td>
+								<td id="max"></td>
+							</tr>
+							<tr>
+								<td id="clouds-title">Cloudiness</td>
+								<td id="clouds"></td>
+							</tr>
+							<tr>
+								<td id="humidity-title">Humidity</td>
+								<td id="humidity"></td>
+							</tr>
+							<tr>
+								<td id="wind-title">Wind</td>
+								<td id="wind"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-sm-7 main-right">
+				<div class="forecast-days-board">
+					<div class="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+					<div class="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+					<div cladss="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+					<div class="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+					<div class="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+					<div class="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+					<div class="forecast-day">
+						<div class="forecast-day-left">
+							<div class="weather"></div>
+						</div>
+						<div class="forecat-day-right">
+							<h4>Date</h4>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
