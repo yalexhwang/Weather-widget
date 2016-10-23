@@ -1,8 +1,8 @@
-### Weather widget
+## Weather widget
 A practice using an API: a weather app pulling data from Open Weather API. 
-#### Technologies & Frameworks 
+### Technologies & Frameworks 
 HTML, CSS, Bootstrap, JavaScript, jQuery
-#### Note
+### Note
 Used Canvas to animate the temperature display 
 ```javascript
 function animate(current) {	
