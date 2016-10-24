@@ -1,5 +1,5 @@
 ## Weather widget
-A practice using an API: a weather app pulling data from Open Weather API. 
+Practice using an API: a weather app pulling data from Open Weather API. 
 ### Technologies & Frameworks 
 HTML, CSS, Bootstrap, JavaScript, jQuery
 ### Note
